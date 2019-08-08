@@ -10,7 +10,7 @@ export default class App extends Component{
 	signIn = async () => {
 		try {
 			const response = await api.post('/login',{
-				email: 'andre_4gama789@hotmail.com',
+				email: 'andre_gama789@hotmail.com',
 				senha: '123',
 			});
 			const { user,jwt } = response.data;
@@ -24,6 +24,12 @@ export default class App extends Component{
 			this.setState({errorMessage: response.data.error});
 		}
 	};
+	async componentDidMount(){
+		const token = await AsyncStorage.getItem('@CodeApi:token');
+		const user = JSON.parse(await AsyncStorage.getItem('@CodeApi:user'));
+		if(token && user)
+			this.setState({ usuarioLogado: user });
+	}
 	render(){
 		return (
 			<View style={styles.container}>
