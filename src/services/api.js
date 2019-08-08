@@ -2,7 +2,7 @@ import { create}  from 'apisauce';
 import { AsyncStorage } from 'react-native';
 
 const api = create({
-	baseUrl: "https://colegasmedicos.com.br/api"
+	baseUrl: ""
 });
 
 api.addAsyncRequestTransform(request => async () => {
